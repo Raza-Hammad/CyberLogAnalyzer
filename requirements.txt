@@ -1,6 +1,5 @@
-flask
+Flask
 pandas
-numpy
-scikit-learn
 joblib
+scikit-learn
 matplotlib
