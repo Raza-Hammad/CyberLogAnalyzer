@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cyber Log Analyzer{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modern.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    {% if request.path != '/login' and request.path != '/' %}
+    <nav class="navbar">
+        <a href="#" class="brand">🛡️ CyberLogAnalyzer</a>
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="#" style="color: var(--accent-red);" onclick="showLogoutModal()">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Custom Logout Modal -->
+    <div id="logoutModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚠️ SECURITY WARNING</h3>
+            </div>
+            <div class="modal-body">
+                <p>TERMINATING SECURE SESSION...</p>
+                <p>Are you sure you want to disconnect from the mainframe?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="hideLogoutModal()">[ CANCEL ]</button>
+                <a href="/login" class="btn-confirm">[ CONFIRM DISCONNECT ]</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogoutModal() {
+            document.getElementById('logoutModal').style.display = 'flex';
+        }
+        function hideLogoutModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+    </script>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>
+```

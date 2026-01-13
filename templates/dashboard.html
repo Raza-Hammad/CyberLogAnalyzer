@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+<canvas id="networkCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+<div class="container" style="position: relative; z-index: 2;">
+    <div style="margin-bottom: 2rem;">
+        <h1>Security Dashboard</h1>
+        <p style="color: var(--text-secondary);">Real-time threat monitoring and access logs</p>
+    </div>
+
+    <!-- Top Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div>Total Events</div>
+            <span class="stat-value">{{ total }}</span>
+        </div>
+        <div class="stat-card danger">
+            <div>High Risk</div>
+            <span class="stat-value">{{ high }}</span>
+        </div>
+        <div class="stat-card warning">
+            <div>Medium Risk</div>
+            <span class="stat-value">{{ medium }}</span>
+        </div>
+        <div class="stat-card success">
+            <div>Normal</div>
+            <span class="stat-value">{{ normal }}</span>
+        </div>
+    </div>
+
+    <!-- Charts Area -->
+    <h2>Analytics</h2>
+    <div class="charts-grid">
+        <div class="chart-container">
+            <img src="{{ risk_chart }}" alt="Risk Distribution">
+        </div>
+        <div class="chart-container">
+            <img src="{{ hour_chart }}" alt="Logins per Hour">
+        </div>
+    </div>
+
+    <!-- Live Logs -->
+    <h2>Recent Activity</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>User ID</th>
+                    <th>IP Address</th>
+                    <th>Status</th>
+                    <th>Risk Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.user_id }}</td>
+                    <td>{{ log.ip_address }}</td>
+                    <td>
+                        {% if log.status == 'High Risk' %}
+                        <span class="badge danger">HIGH RISK</span>
+                        {% elif log.status == 'Medium Risk' %}
+                        <span class="badge warning">MEDIUM</span>
+                        {% else %}
+                        <span class="badge success">NORMAL</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div
+                            style="width: 100%; background: #30363d; height: 6px; border-radius: 3px; margin-top: 4px;">
+                            <div style="
+                                width: {{ log.risk_score }}%; 
+                                height: 100%; 
+                                border-radius: 3px;
+                                background: {% if log.risk_score > 70 %}var(--accent-red){% elif log.risk_score > 40 %}var(--accent-amber){% else %}var(--accent-green){% endif %};
+                            "></div>
+                        </div>
+                        <span style="font-size: 0.75rem; float: right; margin-top: -14px;">{{ log.risk_score | round(1)
+                            }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<script src="{{ url_for('static', filename='js/network.js') }}"></script>
+{% endblock %}

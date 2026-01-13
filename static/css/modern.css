@@ -1,0 +1,560 @@
+/* Modern Security Theme */
+:root {
+    --bg-dark: #0d1117;
+    --bg-card: #161b22;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-red: #da3633;
+    --accent-red-glow: rgba(218, 54, 51, 0.2);
+    --accent-green: #238636;
+    --accent-green-glow: rgba(35, 134, 54, 0.2);
+    --accent-amber: #d29922;
+    --link-color: #58a6ff;
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* Reset & Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify_content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-family: var(--font-mono);
+    color: var(--accent-green);
+    text-shadow: 0 0 10px rgba(35, 134, 54, 0.4);
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+th,
+td,
+.stat-card h3,
+.stat-card p {
+    font-family: var(--font-mono) !important;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Stats Grid - Command Center Style */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--border-color);
+    /* Top accent */
+    border-radius: 4px;
+    /* Sharper corners */
+    padding: 1.5rem;
+    text-align: left;
+    /* Technical alignment */
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tech deco corner */
+.stat-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.05) 50%);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.stat-card.danger {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 15px var(--accent-red-glow);
+}
+
+.stat-card.danger .stat-value {
+    color: var(--accent-red);
+}
+
+.stat-card.warning {
+    border-color: var(--accent-amber);
+}
+
+.stat-card.warning .stat-value {
+    color: var(--accent-amber);
+}
+
+.stat-card.success {
+    border-color: var(--accent-green);
+}
+
+.stat-card.success .stat-value {
+    color: var(--accent-green);
+}
+
+/* Charts Layout */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Data Table */
+.table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background: rgba(48, 54, 61, 0.4);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+}
+
+td {
+    font-family: var(--font-mono);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Status Badges */
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: var(--font-ui);
+    font-weight: 600;
+}
+
+.badge.danger {
+    background: rgba(218, 54, 51, 0.15);
+    color: #ff7b72;
+    border: 1px solid rgba(218, 54, 51, 0.4);
+}
+
+.badge.warning {
+    background: rgba(210, 153, 34, 0.15);
+    color: #d29922;
+    border: 1px solid rgba(210, 153, 34, 0.4);
+}
+
+.badge.success {
+    background: rgba(35, 134, 54, 0.15);
+    color: #3fb950;
+    border: 1px solid rgba(35, 134, 54, 0.4);
+}
+
+.badge.normal {
+    background: rgba(139, 148, 158, 0.15);
+    color: #8b949e;
+    border: 1px solid rgba(139, 148, 158, 0.4);
+}
+
+/* Login Page - Hacker Theme */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    background-image:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scanline animation */
+.login-wrapper::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+/* HUD Login Card */
+.login-card {
+    background: rgba(13, 17, 23, 0.7);
+    /* More transparent */
+    border: 1px solid var(--accent-green);
+    padding: 3rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 0 30px rgba(35, 134, 54, 0.15);
+    text-align: left;
+    position: relative;
+    z-index: 3;
+    backdrop-filter: blur(8px);
+    /* Tech Grid Background */
+    background-image:
+        linear-gradient(rgba(35, 134, 54, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 134, 54, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* HUD Corner Brackets */
+.login-card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--accent-green);
+    border-left: 2px solid var(--accent-green);
+    box-shadow: -2px -2px 10px var(--accent-green);
+}
+
+.login-card::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--accent-green);
+    border-right: 2px solid var(--accent-green);
+    box-shadow: 2px 2px 10px var(--accent-green);
+}
+
+/* Terminal Header */
+.login-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.login-header h2 {
+    font-family: var(--font-mono);
+    color: var(--accent-green);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.login-header h2::before {
+    content: "> ";
+    color: var(--text-secondary);
+}
+
+.login-header p {
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Hacker Input Fields */
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-group label {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 0;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 5px 10px -5px rgba(35, 134, 54, 0.3);
+}
+
+/* Blinking Cursor Effect on focus is hard with pure CSS inputs, 
+   but we can style the caret */
+.form-control {
+    caret-color: var(--accent-green);
+}
+
+/* Execute Button */
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+    border-radius: 0;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: var(--accent-green);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-green);
+}
+
+.alert {
+    background: rgba(218, 54, 51, 0.1);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    border-left: 4px solid var(--accent-red);
+}
+
+/* Glitch Animation Keyframes (simplified) */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Custom Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    /* Darker backdrop */
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Custom Modal HUD Polish */
+.modal-box {
+    background: #0d1117;
+    border: 1px solid var(--accent-red);
+    box-shadow: 0 0 30px rgba(218, 54, 51, 0.2);
+    position: relative;
+    width: 400px;
+    max-width: 90%;
+    animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both;
+    /* Red Grid Background */
+    background-image:
+        linear-gradient(rgba(218, 54, 51, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(218, 54, 51, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.modal-header {
+    background: rgba(218, 54, 51, 0.1);
+    padding: 1rem;
+    border-bottom: 1px solid var(--accent-red);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    letter-spacing: 1px;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.modal-body p {
+    margin-bottom: 0.5rem;
+}
+
+.modal-footer {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+}
+
+.btn-cancel:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-confirm {
+    background: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: bold;
+}
+
+.btn-confirm:hover {
+    background: transparent;
+    color: var(--accent-red);
+}
+
+/* Ultra Glass Dashboard Cards */
+.stat-card,
+.chart-container,
+.table-container {
+    background: rgba(22, 27, 34, 0.6) !important;
+    /* Higher transparent */
+    backdrop-filter: blur(10px);
+}

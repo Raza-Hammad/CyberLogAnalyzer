@@ -1,0 +1,16 @@
+timestamp,user_id,ip_address,login_status,device_type,location,hour,is_night,login_failed,device_enc,location_enc,anomaly_score,risk_score,status
+2025-12-22 07:03:50,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:05:00,attacker,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:06:02,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:11:09,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:14:40,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:16:15,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:22:50,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:30:56,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:32:49,hacker,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:32:59,khadyue,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:33:10,erfireier,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:33:18,hacker,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:33:27,hacker,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.0361221225735017,70,Medium Risk
+2025-12-22 07:33:39,admin,127.0.0.1,success,web,unknown,7,0,0,0,0,0.0361551194361122,0,Normal
+2025-12-22 07:36:31,hacker_demo,127.0.0.1,failure,web,unknown,7,0,1,0,0,-0.03612212257350178,80,High Risk
